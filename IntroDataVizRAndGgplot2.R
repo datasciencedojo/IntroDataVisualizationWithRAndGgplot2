@@ -145,3 +145,30 @@ ggplot(titanic, aes(x = Survived, y = Age)) +
   labs(y = "Age",
        x = "Survived",
        title = "Titanic Survival Rates by Age")
+
+
+#
+# Seventh Question - What is the survival rates by age when segmented
+#                    by gender and class of ticket?
+#
+# A related visualization to the histogram is a density plot. Think of
+# a density plot as a smoothed version of the histogram. Using ggplot2
+# we can use facets to allow for visual drill-down via density plots.
+#
+ggplot(titanic, aes(x = Age, fill = Survived)) +
+  theme_bw() +
+  facet_wrap(Sex ~ Pclass) +
+  geom_density(alpha = 0.5) +
+  labs(y = "Age",
+       x = "Survived",
+       title = "Titanic Survival Rates by Age, Pclass and Sex")
+
+# If you prefer histograms, no problem!
+ggplot(titanic, aes(x = Age, fill = Survived)) +
+  theme_bw() +
+  facet_wrap(Sex ~ Pclass) +
+  geom_histogram(binwidth = 5) +
+  labs(y = "Age",
+       x = "Survived",
+       title = "Titanic Survival Rates by Age, Pclass and Sex")
+
